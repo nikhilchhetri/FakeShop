@@ -11,9 +11,16 @@ const Header = () => {
           <h2>FakeShop</h2>
         </Link>
         <div className="right menu">
-          <Link to={"/cart"} className="item">
-            <h3>Cart - {cartItems.length}</h3>
-          </Link>
+          <div className="">
+            <Link to={"/cart"} className="item">
+              <h3>Cart - {cartItems.length}</h3>
+            </Link>
+          </div>
+          <div className="">
+            <Link to={"/signup"} className="item">
+              <h3>Sign up</h3>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
