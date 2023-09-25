@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { Grid, Card, Image } from "semantic-ui-react"; // Import Semantic UI components
 
 const ProductComponent = () => {
   const products = useSelector((state) => state.allProducts.products);
@@ -8,26 +9,29 @@ const ProductComponent = () => {
   const renderList = products.map((product) => {
     const { id, title, image, price, category } = product;
     return (
-      <div className="four wide column" key={id}>
+      <Grid.Column key={id} mobile={16} tablet={8} computer={4}>
         <Link to={`/product/${id}`}>
-          <div className="ui link card">
-            <div className="image">
-              <img src={image} alt={title} />
-            </div>
-            <div className="content">
-              <div className="header">{title}</div>
-              <div className="meta">
+          <Card>
+            <Image src={image} alt={title} />
+            <Card.Content>
+              <Card.Header>{title}</Card.Header>
+              <Card.Meta>
                 <span className="price">${price}</span>
-              </div>
-              <div className="meta">{category}</div>
-            </div>
-          </div>
+              </Card.Meta>
+              <Card.Meta>{category}</Card.Meta>
+            </Card.Content>
+          </Card>
         </Link>
-      </div>
+      </Grid.Column>
     );
   });
 
-  return <div className="ui four column grid">{renderList}</div>;
+  return (
+    <Grid stackable columns={4}>
+      {" "}
+      {Object.keys(products).length === 0 ? <div>...Loading</div> : renderList}
+    </Grid>
+  );
 };
 
 export default ProductComponent;

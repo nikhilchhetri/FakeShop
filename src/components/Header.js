@@ -1,29 +1,27 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { Container, Menu } from "semantic-ui-react"; // Import Semantic UI components
 
 const Header = () => {
   const cartItems = useSelector((state) => state.productInCart.cart);
+
   return (
-    <div className="ui inverted menu">
-      <div className="ui container">
-        <Link to={"/"} className="header item">
+    <Menu inverted>
+      <Container>
+        <Menu.Item as={Link} to="/" header>
           <h2>FakeShop</h2>
-        </Link>
-        <div className="right menu">
-          <div className="">
-            <Link to={"/cart"} className="item">
-              <h3>Cart - {cartItems.length}</h3>
-            </Link>
-          </div>
-          <div className="">
-            <Link to={"/signup"} className="item">
-              <h3>Sign up</h3>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
+        </Menu.Item>
+        <Menu.Menu position="right">
+          <Menu.Item as={Link} to="/cart">
+            <h3>Cart - {cartItems.length}</h3>
+          </Menu.Item>
+          <Menu.Item as={Link} to="/signup">
+            <h3>Sign up</h3>
+          </Menu.Item>
+        </Menu.Menu>
+      </Container>
+    </Menu>
   );
 };
 
