@@ -48,7 +48,6 @@ const SignupForm = () => {
     <Container text>
       <Segment raised color="blue">
         <Header as="h2">Sign Up</Header>
-
         <Form onSubmit={handleSubmit}>
           {Object.keys(formErrors).length === 0 && isSubmit && (
             <>
