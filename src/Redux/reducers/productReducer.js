@@ -2,6 +2,7 @@ import { ActionTypes } from "../constants/action-types";
 
 const initialState = {
   products: [],
+  cart: [],
 };
 
 export const productReducer = (state = initialState, { type, payload }) => {
@@ -19,6 +20,16 @@ export const selectedProductReducer = (state = {}, { type, payload }) => {
       return { ...state, ...payload };
     case ActionTypes.REMOVE_SELECTED_PRODUCT:
       return {};
+    default:
+      return state;
+  }
+};
+
+export const addToCartReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
+    case ActionTypes.ADD_PRODUCT_TO_CART:
+      return { cart: [...state.cart, payload] };
+
     default:
       return state;
   }

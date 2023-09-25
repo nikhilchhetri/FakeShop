@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
+  addProductToCart,
   removeSelectedProducts,
   selectedProducts,
 } from "../Redux/actions/productActions";
@@ -27,7 +28,9 @@ const ProductDetail = () => {
       dispatch(removeSelectedProducts());
     };
   }, [productId]);
-
+  const handleAddToCart = () => {
+    dispatch(addProductToCart(product));
+  };
   return (
     <div className="ui grid container">
       {Object.keys(product).length === 0 ? (
@@ -43,11 +46,14 @@ const ProductDetail = () => {
               <div className="column rp">
                 <h1>{title}</h1>
                 <h2>
-                  <a className="ui teal tag label">${price}</a>
+                  <span className="ui teal tag label">${price}</span>
                 </h2>
                 <h3 className="ui brown block header">{category}</h3>
                 <p>{description}</p>
-                <div className="ui vertical animated button" tabIndex="0">
+                <div
+                  className="ui vertical animated button"
+                  tabIndex="0"
+                  onClick={handleAddToCart}>
                   <div className="hidden content">
                     <i className="shop icon"></i>
                   </div>
