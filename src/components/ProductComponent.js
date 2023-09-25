@@ -21,7 +21,6 @@ const ProductComponent = () => {
               </div>
               <div className="meta">{category}</div>
             </div>
-            {/* Additional card content or actions can be added here */}
           </div>
         </Link>
       </div>
