@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Container, Menu } from "semantic-ui-react"; // Import Semantic UI components
+import { Container, Menu } from "semantic-ui-react";
 
 const Header = () => {
   const cartItems = useSelector((state) => state.productInCart.cart);

@@ -29,7 +29,6 @@ export const addToCartReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case ActionTypes.ADD_PRODUCT_TO_CART:
       return { cart: [...state.cart, payload] };
-
     default:
       return state;
   }
