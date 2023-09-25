@@ -1,21 +1,13 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ProductListing from "./components/ProductListing";
+import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import "./App.css";
-import ProductDetail from "./components/ProductDetail";
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={ProductListing} />
-          <Route path="/product/:productId" element={ProductDetail} />
-          <Route>404 Not Found!</Route>
-        </Routes>
-      </Router>
+      <Header />
+      <Outlet />
     </div>
   );
 }
