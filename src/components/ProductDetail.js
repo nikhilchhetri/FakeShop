@@ -2,15 +2,12 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import {
-  addProductToCart,
-  removeSelectedProducts,
-  selectedProducts,
-} from "../Redux/actions/productActions";
+import { selectedProducts } from "../Redux/feature/selectedProductSlice";
+import { addToCart } from "../Redux/feature/addToCartSlice";
 const ProductDetail = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
-  const product = useSelector((state) => state.product);
+  const product = useSelector((state) => state.selectedProduct);
   const { image, price, category, description, title } = product;
   const fetchProductDetails = async () => {
     const response = await axios
@@ -25,11 +22,11 @@ const ProductDetail = () => {
       fetchProductDetails();
     }
     return () => {
-      dispatch(removeSelectedProducts());
+      // dispatch(removeSelectedProducts());
     };
   }, [productId]);
   const handleAddToCart = () => {
-    dispatch(addProductToCart(product));
+    dispatch(addToCart(product));
   };
   return (
     <div className="ui grid container">
