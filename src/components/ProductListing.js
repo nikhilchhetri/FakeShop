@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import ProductComponent from "./ProductComponent";
 import axios from "axios";
-import { setProducts } from "../Redux/actions/productActions";
+import { productsList } from "../Redux/feature/productListSlice";
 const ProductListing = () => {
   const dispatch = useDispatch();
   const fetchData = async () => {
@@ -11,7 +11,7 @@ const ProductListing = () => {
       .catch((err) => {
         console.log("Error", err);
       });
-    dispatch(setProducts(response.data));
+    dispatch(productsList(response.data));
   };
   useEffect(() => {
     fetchData();

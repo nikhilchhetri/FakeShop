@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const cartItems = useSelector((state) => state.productInCart.cart);
+  const cartItems = useSelector((state) => state.cartProduct);
 
   return (
     <div className="ui container">

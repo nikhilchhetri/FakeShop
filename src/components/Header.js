@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Container, Menu } from "semantic-ui-react";
 
 const Header = () => {
-  const cartItems = useSelector((state) => state.productInCart.cart);
+  const cartItems = useSelector((state) => state.cartProduct);
 
   return (
     <Menu inverted>
